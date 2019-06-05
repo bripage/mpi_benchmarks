@@ -39,12 +39,12 @@ int main (int argc, char *argv[]){
         timer = 0.0;
 
         for (int i=0; i < iterations; i++) {
-            std::cout << "i = " << i << " before" << std::endl;
             t_start = MPI_Wtime();
+            std::cout << "i = " << i << " before" << std::endl;
             MPI_Alltoall(sendbuffer.data(), size, MPI_INT, receiveBuffer.data(), size, MPI_INT, MPI_COMM_WORLD);
+            std::cout << "i = " << i << " after" << std::endl;
             t_stop = MPI_Wtime();
             MPI_Barrier(MPI_COMM_WORLD);
-            std::cout << "i = " << i << " after" << std::endl;
             timer += t_stop - t_start;
         }
         latency = (double)(timer * 1e6) / iterations;
