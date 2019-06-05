@@ -7,7 +7,7 @@
 
 int main (int argc, char *argv[]){
     int i, numprocs, rank;
-    long maxMessageSize = 1073741824;
+    long maxMessageSize = 268435456;
     double latency = 0.0, t_start = 0.0, t_stop = 0.0;
     double timer=0.0;
     double avg_time = 0.0, max_time = 0.0, min_time = 0.0;
@@ -118,11 +118,11 @@ int main (int argc, char *argv[]){
     if (rank == 0) std::cout << "*** ALL_GATHERv TESTS ***" << std::endl;
 
     for(long size = 1; size <= maxMessageSize; size *= 2) {
-        std::vector<long int> displacements (numprocs);
+        std::vector<int> displacements (numprocs);
         std::vector<int> recvCounts (numprocs);
         for (int i = 0; i < numprocs; ++i){
-            displacements[i] = i * size;
-            recvCounts[i] = size;
+            displacements[i] = i * size/numprocs;
+            recvCounts[i] = size/numprocs;
         }
         MPI_Barrier(MPI_COMM_WORLD);
         timer = 0.0;
