@@ -40,7 +40,7 @@ int main (int argc, char *argv[]){
             t_start = MPI_Wtime();
             MPI_Alltoall(sendbuffer.data(), size, MPI_INT, receiveBuffer.data(), size, MPI_INT, MPI_COMM_WORLD);
             t_stop = MPI_Wtime();
-            MPI_CHECK(MPI_Barrier(MPI_COMM_WORLD);
+            MPI_Barrier(MPI_COMM_WORLD);
         }
         latency = (double)(timer * 1e6) / iterations;
 
