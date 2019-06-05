@@ -84,7 +84,7 @@ int main (int argc, char *argv[]){
 
         for (int i=0; i < iterations; i++) {
             t_start = MPI_Wtime();
-            MPI_Allgather(sendbuffer.data(), size, MPI_INT, receiveBuffer.data(), size, MPI_INT, MPI_COMM_WORLD));
+            MPI_Allgather(sendbuffer.data(), size, MPI_INT, receiveBuffer.data(), size, MPI_INT, MPI_COMM_WORLD);
             t_stop = MPI_Wtime();
             MPI_Barrier(MPI_COMM_WORLD);
             timer += t_stop - t_start;
