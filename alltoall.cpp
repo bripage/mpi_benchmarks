@@ -50,8 +50,8 @@ int main (int argc, char *argv[]){
         MPI_Reduce(&latency, &avg_time, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
         avg_time = avg_time/numprocs;
 
-        double tmp = (size / 1e6 * (numprocs/2)) * iterations * windowSize;
-        double bandwidth = tmp /(avg_time / (numprocs/2));
+        double tmp = (size / 1e6) * iterations * windowSize;
+        double bandwidth = tmp /(avg_time);
 
         if (rank == 0){
             std::cout << numprocs << "," << size << "," << min_time << "," << max_time << "," << avg_time << "," << bandwidth << std::endl;
