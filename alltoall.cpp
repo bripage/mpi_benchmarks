@@ -13,6 +13,8 @@ int main (int argc, char *argv[]){
     char * sendbuf = NULL, * recvbuf = NULL;
     int po_ret;
     size_t bufsize;
+    int iterations = 10;
+    int windowSize = 1;
 
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
@@ -34,20 +36,20 @@ int main (int argc, char *argv[]){
         MPI_Barrier(MPI_COMM_WORLD);
         timer = 0.0;
 
-        for (int i=0; i < 10; i++) {
+        for (int i=0; i < iterations; i++) {
             t_start = MPI_Wtime();
             MPI_Alltoall(sendbuffer.data(), size, MPI_INT, receiveBuffer.data(), size, MPI_INT, MPI_COMM_WORLD);
             t_stop = MPI_Wtime();
             MPI_CHECK(MPI_Barrier(MPI_COMM_WORLD);
         }
-        latency = (double)(timer * 1e6) / options.iterations;
+        latency = (double)(timer * 1e6) / iterations;
 
         MPI_Reduce(&latency, &min_time, 1, MPI_DOUBLE, MPI_MIN, 0, MPI_COMM_WORLD);
         MPI_Reduce(&latency, &max_time, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);
         MPI_Reduce(&latency, &avg_time, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
         avg_time = avg_time/numprocs;
 
-        double tmp = size / 1e6 * (numprocs/2);
+        double tmp = (size / 1e6 * (numprocs/2)) * iterations * windowSize;
         double bandwidth = tmp /(avg_time / (numprocs/2));
 
         if (rank == 0){
