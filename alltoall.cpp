@@ -50,7 +50,8 @@ int main (int argc, char *argv[]){
         MPI_Reduce(&latency, &avg_time, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
         avg_time = avg_time/numprocs;
 
-        double tmp = (size / 1e6) * iterations * windowSize;
+        double tmp = (size / 1e6) * numprocs;
+        tmp *= iterations * windowSize;
         double bandwidth = tmp /(avg_time);
 
         if (rank == 0){
