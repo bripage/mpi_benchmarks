@@ -117,12 +117,18 @@ int main (int argc, char *argv[]){
     if (rank == 0) std::cout << "*** ALL_GATHER TESTS ***" << std::endl;
 
     for(int size = 1; size <= maxMessageSize; size *= 2) {
+        std::vector<int> displacements (numprocs);
+        std::vector<int> recvCounts (numprocs);
+        for (int i = 0; i < numprocs; ++i){
+            displacements[i] = i * size;
+            recvCounts[i] = size;
+        }
         MPI_Barrier(MPI_COMM_WORLD);
         timer = 0.0;
 
         for (int i=0; i < iterations; i++) {
             t_start = MPI_Wtime();
-            MPI_Allgatherv(&sendbuffer[rank*size], size, MPI_INT, receiveBuffer.data(), size, MPI_INT, MPI_COMM_WORLD);
+            MPI_Allgatherv(&sendbuffer[rank*size], size, MPI_INT, receiveBuffer.data(), recvCounts.data(), displacements.data() MPI_INT, MPI_COMM_WORLD);
             t_stop = MPI_Wtime();
             MPI_Barrier(MPI_COMM_WORLD);
             timer += t_stop - t_start;

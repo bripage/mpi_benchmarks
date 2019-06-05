@@ -23,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/alltoall.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="124" column="26" selection-start-line="124" selection-start-column="26" selection-end-line="124" selection-end-column="26" />
+            <state relative-caret-position="513">
+              <caret line="130" column="127" selection-start-line="130" selection-start-column="127" selection-end-line="130" selection-end-column="127" />
             </state>
           </provider>
         </entry>
@@ -52,8 +52,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="214" />
-    <option name="y" value="88" />
+    <option name="x" value="650" />
+    <option name="y" value="124" />
     <option name="width" value="1807" />
     <option name="height" value="1205" />
   </component>
@@ -104,15 +104,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559673248665</updated>
-      <workItem from="1559673251123" duration="13690000" />
+      <workItem from="1559673251123" duration="13935000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13690000" />
+    <option name="totallyTimeSpent" value="13935000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="214" y="88" width="1807" height="1205" extended-state="0" />
+    <frame x="650" y="124" width="1807" height="1205" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
@@ -148,8 +148,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/alltoall.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="124" column="26" selection-start-line="124" selection-start-column="26" selection-end-line="124" selection-end-column="26" />
+        <state relative-caret-position="513">
+          <caret line="130" column="127" selection-start-line="130" selection-start-column="127" selection-end-line="130" selection-end-column="127" />
         </state>
       </provider>
     </entry>
