@@ -57,7 +57,7 @@ int main (int argc, char *argv[]){
         if (rank == 0){
             avg_time = avg_time/numprocs;
             double bytes = (size * 4);
-            bytes *= iterations;
+            bytes *= numprocs;
             double bandwidth;
             double temp;
 
@@ -70,7 +70,7 @@ int main (int argc, char *argv[]){
             bandwidth = (bytes / 1048576) / temp;
             //std::cout << "calculated bandwidth" << std::endl;
 
-            std::cout << numprocs << "," << size << "," << min_time << "," << max_time << "," << avg_time << "," << bandwidth << "MB/s" << std::endl;
+            std::cout << numprocs << "," << size << "," << min_time/1000 << "," << max_time/1000 << "," << avg_time/1000 << "," << bandwidth << "MB/s" << std::endl;
         }
     }
 
