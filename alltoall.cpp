@@ -34,15 +34,15 @@ int main (int argc, char *argv[]){
     std::cout << sendbuffer.size() << "," << receiveBuffer.size() << "," << maxMessageSize << std::endl;
 
     for(int size = 1; size <= maxMessageSize; size *= 2) {
-        std::cout << "size = " << size << std::endl;
+        //std::cout << "size = " << size << std::endl;
         MPI_Barrier(MPI_COMM_WORLD);
         timer = 0.0;
 
         for (int i=0; i < iterations; i++) {
             t_start = MPI_Wtime();
-            std::cout << "i = " << i << " before" << std::endl;
+            //std::cout << "i = " << i << " before" << std::endl;
             MPI_Alltoall(sendbuffer.data(), size, MPI_INT, receiveBuffer.data(), size, MPI_INT, MPI_COMM_WORLD);
-            std::cout << "i = " << i << " after" << std::endl;
+            //std::cout << "i = " << i << " after" << std::endl;
             t_stop = MPI_Wtime();
             MPI_Barrier(MPI_COMM_WORLD);
             timer += t_stop - t_start;
@@ -52,15 +52,15 @@ int main (int argc, char *argv[]){
         MPI_Reduce(&latency, &min_time, 1, MPI_DOUBLE, MPI_MIN, 0, MPI_COMM_WORLD);
         MPI_Reduce(&latency, &max_time, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);
         MPI_Reduce(&latency, &avg_time, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
-        std::cout << "got latencies" << std::endl;
+        //std::cout << "got latencies" << std::endl;
 
         if (rank == 0){
             avg_time = avg_time/numprocs;
-            double tmp = (size / 1e6) * numprocs;
+            double tmp = (size * 4) * numprocs;
             tmp *= iterations * windowSize;
-            double bandwidth = tmp /(avg_time);
+            double bandwidth = (tmp /(avg_time)) / (1024*1024);
 
-            std::cout << "calculated bandwidth" << std::endl;
+            //std::cout << "calculated bandwidth" << std::endl;
 
             std::cout << numprocs << "," << size << "," << min_time << "," << max_time << "," << avg_time << "," << bandwidth << std::endl;
         }
