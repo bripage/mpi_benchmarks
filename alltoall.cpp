@@ -6,7 +6,7 @@
 
 
 int main (int argc, char *argv[]){
-    int i, numprocs, rank, maxMessageSize = 4194304;
+    int i, numprocs, rank, maxMessageSize = 67108864;
     double latency = 0.0, t_start = 0.0, t_stop = 0.0;
     double timer=0.0;
     double avg_time = 0.0, max_time = 0.0, min_time = 0.0;
@@ -56,13 +56,21 @@ int main (int argc, char *argv[]){
 
         if (rank == 0){
             avg_time = avg_time/numprocs;
-            double tmp = (size * 4) * numprocs;
-            tmp *= iterations * windowSize;
-            double bandwidth = (tmp /(avg_time)) / (1024*1024);
+            double bytes = (size * 4);
+            bytes *= iterations;
+            double bandwidth;
+            double temp;
 
+            if (avg_time < 1000){
+                temp = 1 / avg_time;
+            } else {
+                temp = avg_time / 1000;
+            }
+
+            bandwidth = (bytes / 1048576) / temp;
             //std::cout << "calculated bandwidth" << std::endl;
 
-            std::cout << numprocs << "," << size << "," << min_time << "," << max_time << "," << avg_time << "," << bandwidth << std::endl;
+            std::cout << numprocs << "," << size << "," << min_time << "," << max_time << "," << avg_time << "," << bandwidth << "MB/s" << std::endl;
         }
     }
 
