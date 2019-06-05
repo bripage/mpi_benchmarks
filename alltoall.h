@@ -5,7 +5,7 @@
 #ifndef MPI_BENCHMARKS_ALLTOALL_H
 #define MPI_BENCHMARKS_ALLTOALL_H
 
-#include <mpi>
+#include <mpi.h>
 #include <iostream>
 #include <stblid>
 #include <stdio.h>
