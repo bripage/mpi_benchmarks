@@ -41,7 +41,7 @@ int main (int argc, char *argv[]){
         for (int i=0; i < iterations; i++) {
             std::cout << "i = " << i << " before" << std::endl;
             t_start = MPI_Wtime();
-            MPI_Alltoall(sendbuffer.data(), sendbuffer.size(), MPI_INT, receiveBuffer.data(), sendbuffer.size(), MPI_INT, MPI_COMM_WORLD);
+            MPI_Alltoall(sendbuffer.data(), size, MPI_INT, receiveBuffer.data(), size, MPI_INT, MPI_COMM_WORLD);
             t_stop = MPI_Wtime();
             MPI_Barrier(MPI_COMM_WORLD);
             std::cout << "i = " << i << " after" << std::endl;
