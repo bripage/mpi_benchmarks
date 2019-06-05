@@ -14,16 +14,16 @@ int main (int argc, char *argv[]){
     int po_ret;
     size_t bufsize;
 
-    MPI_CHECK(MPI_Init(&argc, &argv));
-    MPI_CHECK(MPI_Comm_rank(MPI_COMM_WORLD, &rank));
-    MPI_CHECK(MPI_Comm_size(MPI_COMM_WORLD, &numprocs));
+    MPI_Init(&argc, &argv);
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
 
 
     if(numprocs < 2) {
         if (rank == 0) {
             std::cout << "This test requires at least two processes" << std::endl;
         }
-        MPI_CHECK(MPI_Finalize());
+        MPI_Finalize();
         exit(EXIT_FAILURE);
     }
 
@@ -46,31 +46,21 @@ int main (int argc, char *argv[]){
         }
         latency = (double)(timer * 1e6) / options.iterations;
 
-        MPI_CHECK(MPI_Reduce(&latency, &min_time, 1, MPI_DOUBLE, MPI_MIN, 0,
-                             MPI_COMM_WORLD));
-        MPI_CHECK(MPI_Reduce(&latency, &max_time, 1, MPI_DOUBLE, MPI_MAX, 0,
-                             MPI_COMM_WORLD));
-        MPI_CHECK(MPI_Reduce(&latency, &avg_time, 1, MPI_DOUBLE, MPI_SUM, 0,
-                             MPI_COMM_WORLD));
+        MPI_Reduce(&latency, &min_time, 1, MPI_DOUBLE, MPI_MIN, 0, MPI_COMM_WORLD));
+        MPI_Reduce(&latency, &max_time, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD));
+        MPI_Reduce(&latency, &avg_time, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD));
         avg_time = avg_time/numprocs;
 
-        print_stats(rank, size, avg_time, min_time, max_time);
-        MPI_CHECK(MPI_Barrier(MPI_COMM_WORLD));
-    }
+        double tmp = size / 1e6 * (numprocs/2);
+        double bandwidth = tmp /(avg_time / (numprocs/2));
 
-    free_buffer(sendbuf, options.accel);
-    free_buffer(recvbuf, options.accel);
-
-    MPI_CHECK(MPI_Finalize());
-
-    if (NONE != options.accel) {
-        if (cleanup_accel()) {
-            fprintf(stderr, "Error cleaning up device\n");
-            exit(EXIT_FAILURE);
+        if (rank == 0){
+            std::cout << numprocs << "," << size << "," << min_time << "," << max_time << "," << avg_time << "," << bandwidth << std::endl;
         }
     }
 
-    return EXIT_SUCCESS;
+    MPI_Finalize();
+
+    return 0;
 }
 
-/* vi: set sw=4 sts=4 tw=80: */

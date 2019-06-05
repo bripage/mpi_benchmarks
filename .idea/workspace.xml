@@ -10,9 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b088bf9-d74b-4349-8f2a-0eb27003892c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/alltoall.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/alltoall.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alltoall.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/alltoall.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/alltoall.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="38" column="112" lean-forward="true" selection-start-line="38" selection-start-column="112" selection-end-line="38" selection-end-column="112" />
+            <state relative-caret-position="855">
+              <caret line="57" column="129" selection-start-line="57" selection-start-column="129" selection-end-line="57" selection-end-column="129" />
             </state>
           </provider>
         </entry>
@@ -54,9 +52,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="28" />
-    <option name="y" value="23" />
-    <option name="width" value="2321" />
+    <option name="x" value="187" />
+    <option name="y" value="81" />
+    <option name="width" value="1807" />
     <option name="height" value="1205" />
   </component>
   <component name="ProjectView">
@@ -106,19 +104,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559673248665</updated>
-      <workItem from="1559673251123" duration="1980000" />
+      <workItem from="1559673251123" duration="5564000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1980000" />
+    <option name="totallyTimeSpent" value="5564000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="28" y="23" width="2321" height="1205" extended-state="0" />
+    <frame x="187" y="81" width="1807" height="1205" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24967091" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14674221" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
@@ -150,8 +148,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/alltoall.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="38" column="112" lean-forward="true" selection-start-line="38" selection-start-column="112" selection-end-line="38" selection-end-column="112" />
+        <state relative-caret-position="855">
+          <caret line="57" column="129" selection-start-line="57" selection-start-column="129" selection-end-line="57" selection-end-column="129" />
         </state>
       </provider>
     </entry>
