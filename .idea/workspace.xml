@@ -23,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/alltoall.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
+            <state relative-caret-position="660">
+              <caret line="44" column="62" selection-start-line="44" selection-start-column="62" selection-end-line="44" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -104,16 +104,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559673248665</updated>
-      <workItem from="1559673251123" duration="9521000" />
+      <workItem from="1559673251123" duration="9744000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9521000" />
+    <option name="totallyTimeSpent" value="9744000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="214" y="90" width="1807" height="1205" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14674221" />
@@ -148,8 +147,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/alltoall.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
+        <state relative-caret-position="660">
+          <caret line="44" column="62" selection-start-line="44" selection-start-column="62" selection-end-line="44" selection-end-column="62" />
         </state>
       </provider>
     </entry>
