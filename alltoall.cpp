@@ -62,7 +62,7 @@ int main (int argc, char *argv[]){
             double temp;
 
             if (avg_time < 1000){
-                temp = 1 / avg_time;
+                temp = 1/ (1000 / avg_time);
             } else {
                 temp = avg_time / 1000;
             }
