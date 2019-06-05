@@ -41,6 +41,7 @@ int main (int argc, char *argv[]){
             MPI_Alltoall(sendbuffer.data(), size, MPI_INT, receiveBuffer.data(), size, MPI_INT, MPI_COMM_WORLD);
             t_stop = MPI_Wtime();
             MPI_Barrier(MPI_COMM_WORLD);
+            timer += t_stop - t_start;
         }
         latency = (double)(timer * 1e6) / iterations;
 
