@@ -7,7 +7,6 @@
 
 #include <mpi.h>
 #include <iostream>
-#include <stblid>
 #include <stdio.h>
 #include <stdlib.h>
 
