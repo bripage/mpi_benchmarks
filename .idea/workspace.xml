@@ -9,9 +9,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b088bf9-d74b-4349-8f2a-0eb27003892c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/alltoall.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/alltoall.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="6b088bf9-d74b-4349-8f2a-0eb27003892c" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,15 +102,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559673248665</updated>
-      <workItem from="1559673251123" duration="9744000" />
+      <workItem from="1559673251123" duration="9995000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9744000" />
+    <option name="totallyTimeSpent" value="9995000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="214" y="90" width="1807" height="1205" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14674221" />
