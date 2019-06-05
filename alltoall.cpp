@@ -6,7 +6,7 @@
 
 
 int main (int argc, char *argv[]){
-    int i, numprocs, rank, maxMessageSize;
+    int i, numprocs, rank, maxMessageSize = 1048576;
     double latency = 0.0, t_start = 0.0, t_stop = 0.0;
     double timer=0.0;
     double avg_time = 0.0, max_time = 0.0, min_time = 0.0;
