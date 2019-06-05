@@ -31,6 +31,7 @@ int main (int argc, char *argv[]){
 
     std::vector <int> sendbuffer (maxMessageSize, rand());
     std::vector <int> receiveBuffer (maxMessageSize);
+    std::cout << sendbuffer.size() << "," << receiveBuffer.size() << "," << maxMessageSize << std::endl;
 
     for(int size = 1; size <= maxMessageSize; size *= 2) {
         MPI_Barrier(MPI_COMM_WORLD);
