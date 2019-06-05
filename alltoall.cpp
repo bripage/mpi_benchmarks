@@ -31,7 +31,9 @@ int main (int argc, char *argv[]){
 
     std::vector <int> sendbuffer (maxMessageSize, rand());
     std::vector <int> receiveBuffer (maxMessageSize*numprocs, 0);
-    std::cout << sendbuffer.size() << "," << receiveBuffer.size() << "," << maxMessageSize << std::endl;
+    //std::cout << sendbuffer.size() << "," << receiveBuffer.size() << "," << maxMessageSize << std::endl;
+
+    std::cout << "*** ALL_to_ALL TESTS ***" << std::endl;
 
     for(int size = 1; size <= maxMessageSize; size *= 2) {
         //std::cout << "size = " << size << std::endl;
@@ -70,9 +72,48 @@ int main (int argc, char *argv[]){
             bandwidth = (bytes / 1048576) / temp;
             //std::cout << "calculated bandwidth" << std::endl;
 
-            std::cout << numprocs << "," << size << "," << min_time/1000 << "," << max_time/1000 << "," << avg_time/1000 << "," << bandwidth << "MB/s" << std::endl;
+            std::cout << numprocs << "," << size*4 << "," << min_time/1000 << "," << max_time/1000 << "," << avg_time/1000 << "," << bandwidth << "MB/s" << std::endl;
         }
     }
+
+    std::cout << "*** ALL_GATHER TESTS ***" << std::endl;
+
+    for(int size = 1; size <= maxMessageSize; size *= 2) {
+        MPI_Barrier(MPI_COMM_WORLD);
+        timer = 0.0;
+
+        for (int i=0; i < iterations; i++) {
+            t_start = MPI_Wtime();
+            MPI_Allgather(sendbuffer.data(), size, MPI_INT, receiveBuffer.data(), size, MPI_INT, MPI_COMM_WORLD));
+            t_stop = MPI_Wtime();
+            MPI_Barrier(MPI_COMM_WORLD);
+            timer += t_stop - t_start;
+        }
+        latency = (double)(timer * 1e6) / iterations;
+
+        MPI_Reduce(&latency, &min_time, 1, MPI_DOUBLE, MPI_MIN, 0, MPI_COMM_WORLD);
+        MPI_Reduce(&latency, &max_time, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);
+        MPI_Reduce(&latency, &avg_time, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
+
+        if (rank == 0){
+            avg_time = avg_time/numprocs;
+            double bytes = (size * 4);
+            bytes *= numprocs;
+            double bandwidth;
+            double temp;
+
+            if (avg_time < 1000){
+                temp = 1/ (1000 / avg_time);
+            } else {
+                temp = avg_time / 1000;
+            }
+
+            bandwidth = (bytes / 1048576) / temp;
+
+            std::cout << numprocs << "," << size*4 << "," << min_time/1000 << "," << max_time/1000 << "," << avg_time/1000 << "," << bandwidth << "MB/s" << std::endl;
+        }
+    }
+
 
     MPI_Finalize();
 
