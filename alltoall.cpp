@@ -57,7 +57,7 @@ int main (int argc, char *argv[]){
         tmp *= iterations * windowSize;
         double bandwidth = tmp /(avg_time);
 
-        std::cout << "calculated bandwidth << std::endl;
+        std::cout << "calculated bandwidth" << std::endl;
 
         if (rank == 0){
             std::cout << numprocs << "," << size << "," << min_time << "," << max_time << "," << avg_time << "," << bandwidth << std::endl;
