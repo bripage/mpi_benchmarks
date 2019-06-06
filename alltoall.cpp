@@ -34,7 +34,7 @@ int main (int argc, char *argv[]){
     std::vector <int> receiveBuffer (maxMessageSize*numprocs, 0);
     //std::cout << sendbuffer.size() << "," << receiveBuffer.size() << "," << maxMessageSize << std::endl;
 
-    double mpiTick = MPI_Tick();
+    double mpiTick = MPI_Wtick();
     std::cout << "tick length = " << mpiTick << std::endl;
 
     if (rank == 0) std::cout << "*** ALL_to_ALL TESTS ***" << std::endl;
