@@ -137,7 +137,7 @@ int main (int argc, char *argv[]){
             MPI_Barrier(MPI_COMM_WORLD);
             timer += t_stop - t_start;
         }
-        latency = (double)(timer * 1e6) / iterations;
+        latency = (double)(timer * 1000000000) / iterations;
 
         MPI_Reduce(&latency, &min_time, 1, MPI_DOUBLE, MPI_MIN, 0, MPI_COMM_WORLD);
         MPI_Reduce(&latency, &max_time, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);
@@ -150,15 +150,15 @@ int main (int argc, char *argv[]){
             double bandwidth;
             double temp;
 
-            if (avg_time < 1000){
-                temp = 1/ (1000 / avg_time);
+            if (avg_time < 1000000000){
+                temp = 1/ (1000000000 / avg_time);
             } else {
-                temp = avg_time / 1000;
+                temp = avg_time / 1000000000;
             }
 
             bandwidth = (bytes / 1048576) / temp;
 
-            std::cout << numprocs << "," << size*4 << "," << min_time/1000 << "," << max_time/1000 << "," << avg_time/1000 << "," << bandwidth << "MB/s" << std::endl;
+            std::cout << numprocs << "," << size*4 << "," << min_time/1000000000 << "," << max_time/1000000000 << "," << avg_time/1000000000 << "," << bandwidth << "MB/s" << std::endl;
         }
     }
 
